@@ -14,6 +14,11 @@
 | last_name_ruby        | string     | null: false                    |
 | birthday              | date       | null: false                    |
 
+### Association
+
+- has_many :items
+- has_many :buys
+
 ## items テーブル
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -27,6 +32,11 @@
 | shipping_days_id   | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
+### Association
+
+- belongs_to :user
+- has_one :buy_management
+
 ## buys テーブル
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -36,6 +46,12 @@
 | block            | string     | null: false                    |
 | building         | string     |                                |
 | phone_number     | string     | null: false                    |
+| buy_management   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- has_one :buy_management
 
 ## buy_management テーブル
 
@@ -43,5 +59,10 @@
 | ---------------- | ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :items
+- belongs_to :buys
 
 
