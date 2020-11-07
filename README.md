@@ -17,7 +17,7 @@
 ### Association
 
 - has_many :items
-- has_many :buys
+- has_many :buy_management
 
 ## items テーブル
 | Column             | Type       | Options                        |
