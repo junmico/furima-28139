@@ -17,7 +17,7 @@
 ### Association
 
 - has_many :items
-- has_many :buy_managements, through: buys
+- has_many :buy_managements
 
 ## items テーブル
 | Column             | Type       | Options                        |
@@ -63,7 +63,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :item
+- belongs_to :item
 - has_one :buy
 
 
