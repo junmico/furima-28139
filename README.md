@@ -17,7 +17,7 @@
 ### Association
 
 - has_many :items
-- has_many :buy_managements, through: buy
+- has_many :buy_managements
 
 ## items テーブル
 | Column             | Type       | Options                        |
@@ -29,7 +29,7 @@
 | status_id          | integer    | null: false                    |
 | bearer_id          | integer    | null: false                    |
 | shipping_area_id   | integer    | null: false                    |
-| shipping_days_id   | integer    | null: false                    |
+| shipping_day_id   | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
 ### Association
