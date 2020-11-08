@@ -1,24 +1,68 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テーブル設計
 
-Things you may want to cover:
+## users テーブル
+| Column                | Type       | Options                        |
+| --------------------- | ---------- | ------------------------------ |
+| username              | string     | null: false                    |
+| email                 | string     | null: false                    |
+| encrypted_password    | string     | null: false                    |
+| first_name            | string     | null: false                    |
+| last_name             | string     | null: false                    |
+| first_name_ruby       | string     | null: false                    |
+| last_name_ruby        | string     | null: false                    |
+| birthday              | date       | null: false                    |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :buy_managements
 
-* Configuration
+## items テーブル
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| explanation        | text       | null: false                    |
+| price              | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| bearer_id          | integer    | null: false                    |
+| shipping_area_id   | integer    | null: false                    |
+| shipping_day_id   | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
-* Database creation
+### Association
 
-* Database initialization
+- belongs_to :user
+- has_one :buy_management
 
-* How to run the test suite
+## buys テーブル
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| postcode         | string     | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| city             | string     | null: false                    |
+| block            | string     | null: false                    |
+| building         | string     |                                |
+| phone_number     | string     | null: false                    |
+| buy_management   | references | null: false, foreign_key: true |
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
 
-* Deployment instructions
+- belongs_to :buy_management
 
-* ...
+## buy_managements テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :buy
+
+
